@@ -1,5 +1,6 @@
 package start;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -35,11 +36,14 @@ public class JPAMain {
 	}
 
 	public static void doBusiness(EntityManager em) {
-		String id = "id4";
+		String id = "id1";
 		Member member = new Member();
 		member.setId(id);
 		member.setUsername("경훈");
 		member.setAge(2);
+		member.setRoleType(RoleType.USER);
+		member.setJoinDate(new Date());
+		member.setDescription("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		
 		
 		em.persist(member);
