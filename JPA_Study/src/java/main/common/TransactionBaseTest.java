@@ -1,4 +1,4 @@
-package chap4.test;
+package common;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
