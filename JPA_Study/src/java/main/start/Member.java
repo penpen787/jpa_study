@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
-@Entity
+@Entity(name = "start_team")
 /* Unique Constraint 는 DDL 이 생성될때만 영향을 준다
  * But 기술해 놓으면 개발자가 코드만 보고 테이블의 Unique 조건을 알 수 있다.
  * @see 그렇다면 테이블과 코드의 Sync 문제는? 죽은코드가 되는게 아닐까?
