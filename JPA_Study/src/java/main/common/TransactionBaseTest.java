@@ -6,10 +6,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public abstract class TransactionBaseTest {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Test
 	public void test() {
 		// 엔티티 매니저 팩토리 생성
