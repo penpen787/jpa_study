@@ -12,8 +12,8 @@ public class Chap5Test extends  TransactionBaseTest {
 	@Override
 	public void doBusiness(EntityManager em) {
 		
-		Member m1 = new Member("member1", "회원1");
-		Member m2 = new Member("member2", "회원2");
+		Member m1 = new Member("member3", "회원1");
+		Member m2 = new Member("member4", "회원2");
 		
 		Team team1 = new Team("team1", "팀1");
 		

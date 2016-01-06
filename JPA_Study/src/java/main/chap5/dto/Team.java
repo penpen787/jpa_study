@@ -1,7 +1,11 @@
 package chap5.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "chap5_team")
@@ -12,6 +16,11 @@ public class Team {
 	private String id;
 	
 	private String name;
+	
+	// 'mappedBy' property indicates the owner of the relationship,
+	// in this case, it points Member.team
+	@OneToMany(mappedBy = "team")
+	private List<Member> members = new ArrayList<>();
 	
 	public Team() {}
 	
@@ -34,6 +43,14 @@ public class Team {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Member> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<Member> members) {
+		this.members = members;
 	}
 
 }

@@ -50,7 +50,15 @@ public class Member {
 	}
 
 	public void setTeam(Team team) {
+		
+		// if member already has team, remove this member from the team.
+		if(this.team != null) {
+			this.team.getMembers().remove(this);
+		}
+		
+		// make relation each direction
 		this.team = team;
+		team.getMembers().add(this);
 	}
 
 }

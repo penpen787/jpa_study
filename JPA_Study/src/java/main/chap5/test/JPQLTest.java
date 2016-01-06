@@ -17,14 +17,10 @@ public class JPQLTest extends TransactionBaseTest {
 				+ "JOIN M.team T WHERE T.name=:teamName";
 
 		List<Member> resultList = em.createQuery(query, Member.class)
-				.setParameter("teamName", "팀1")
-				.getResultList();
+				.setParameter("teamName", "팀1").getResultList();
 
 		for (Member member : resultList) {
 			logger.debug(member.getUsername());
-			
 		}
-		
 	}
-
 }
