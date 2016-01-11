@@ -13,10 +13,10 @@ public class BoardSeqTest extends TransactionBaseTest {
 	@Override
 	public void doBusiness(EntityManager em) {
 		
-		String data = "Data : " + (new Date()).toString(); 
+		String date = "Date : " + (new Date()).toString(); 
 		
 		Board board = new Board();
-		board.setData(data);
+		board.setData(date);
 		
 		em.persist(board);
 		

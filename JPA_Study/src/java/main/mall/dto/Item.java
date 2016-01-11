@@ -1,8 +1,11 @@
 package mall.dto;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Item {
@@ -12,6 +15,9 @@ public class Item {
 	private String name;
 	private int price;
 	private int qty;
+	
+	@OneToMany(mappedBy = "item")
+	private List<CategoryGroup> categoryGroup;
 
 	public Long getId() {
 		return id;

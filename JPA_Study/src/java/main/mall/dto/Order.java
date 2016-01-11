@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,32 +22,47 @@ import javax.persistence.TemporalType;
 @Table(name = "MALL_ORDER")
 public class Order {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID")
 	private Member member;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "ORDER_DATE")
 	private Date orderDate;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ORDER_STATUS")
 	private OrderStatus status;
 
 	@OneToMany(mappedBy = "order")
 	private List<OrderItem> orderItems = new ArrayList<>();
-	
+
+	@OneToOne
+	@JoinColumn(name = "DELIVERY_ID")
+	private Delivery delivery;
+
 	public List<OrderItem> getOrderItems() {
 		return orderItems;
+	}
+
+	public Delivery getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(Delivery delivery) {
+		this.delivery = delivery;
+		delivery.setOrder(this);
 	}
 
 	public void addOrderItem(OrderItem orderItem) {
 		orderItems.add(orderItem);
 		orderItem.setOrder(this);
 	}
+
 	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
@@ -57,7 +73,7 @@ public class Order {
 
 	public void setMember(Member member) {
 		// 기존 관계 제거
-		if(this.member != null) {
+		if (this.member != null) {
 			this.member.getOrders().remove(this);
 		}
 		this.member = member;
