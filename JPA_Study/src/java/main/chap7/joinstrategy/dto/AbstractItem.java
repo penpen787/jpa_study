@@ -9,9 +9,10 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+// 컬럼 조인 구분값
 @DiscriminatorColumn(name = "DTYPE")
 public class AbstractItem {
-
+	
 	@Id
 	@GeneratedValue
 	private long id;
